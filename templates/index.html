@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block body %}
+{% if synthetic %}<div class="flash">⚠ heart.csv not found: models are trained on synthetic DEMO data. Add the UCI/Kaggle heart.csv and visit /retrain.</div>{% endif %}
+<form method="post" action="/predict" class="card"><div class="grid">
+{% for name,label,kind,opt in fields %}
+<div><label>{{ label }}</label>
+{% if kind=='select' %}<select name="{{name}}">{% for v,t in opt %}<option value="{{v}}" {{'selected' if values.get(name)==v}}>{{t}}</option>{% endfor %}</select>
+{% elif kind=='number' %}<input name="{{name}}" type="number" step="any" min="{{opt[0]}}" max="{{opt[1]}}" value="{{values.get(name,'')}}" required><small>(Range: {{opt[0]}} - {{opt[1]}})</small>
+{% else %}<input name="{{name}}" value="{{values.get(name,'')}}" required>{% endif %}</div>
+{% endfor %}</div><p style="text-align:center"><button>Predict</button></p></form>
+{% endblock %}

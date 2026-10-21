@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Heart Disease Prediction System</title>
+<style>
+body{font-family:Arial,sans-serif;background:#e8cdd2;margin:0;padding:16px}
+h1{text-align:center;font-weight:400}
+.nav{text-align:center;margin-bottom:10px}.nav a{margin:0 10px;color:#a0204a}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;max-width:900px;margin:auto}
+label{font-weight:bold;font-size:14px;display:block;margin-bottom:3px}
+input,select{width:100%;padding:6px;box-sizing:border-box}
+small{color:#666}
+button,.btn{background:#ff4d94;color:#fff;border:0;padding:10px 28px;cursor:pointer;text-decoration:none;display:inline-block}
+.card{background:#fff;border-radius:8px;padding:16px;margin:12px auto;max-width:900px}
+table{border-collapse:collapse;width:100%}th{background:#3498db;color:#fff}
+td,th{border:1px solid #999;padding:6px;text-align:center;font-size:14px}
+.flash{background:#fff3cd;padding:8px;max-width:900px;margin:8px auto;border-radius:4px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<h1>❤️ Heart Disease Prediction System ❤️</h1>
+{% if session.admin %}<div class="nav"><a href="/">Predict</a><a href="/history">History</a><a href="/retrain">Retrain</a><a href="/logout">Logout</a></div>{% endif %}
+{% with m = get_flashed_messages() %}{% for x in m %}<div class="flash">{{ x }}</div>{% endfor %}{% endwith %}
+{% block body %}{% endblock %}</body></html>

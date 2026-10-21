@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block body %}
+<div class="card"><form><input name="pid" value="{{q}}" placeholder="Search by Patient ID" style="width:200px"> <button>Search</button></form><br>
+<table><tr><th>Patient ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Result</th><th>Risk %</th><th>Algorithm</th><th>Date</th></tr>
+{% for r in rows %}<tr><td>{{r.patient_id}}</td><td>{{r.name}}</td><td>{{r.age}}</td><td>{{r.gender}}</td><td>{{r.result}}</td><td>{{r.probability}}</td><td>{{r.algorithm}}</td><td>{{r.created_at.strftime('%Y-%m-%d %H:%M')}}</td></tr>
+{% else %}<tr><td colspan="8">No records</td></tr>{% endfor %}</table></div>{% endblock %}

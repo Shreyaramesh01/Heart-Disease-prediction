@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block body %}
+<div class="card" style="text-align:center">
+<h2 style="color:{{ '#c0392b' if pred else '#27ae60' }}">{{ label }}</h2>
+<b>Risk Probability:</b> {{ prob }}%<br><b>Best Algorithm:</b> {{ best }}<br><br>
+<a class="btn" href="/">Predict Again</a></div>
+<div class="card"><h3>Model Metrics</h3><table>
+<tr><th>Algorithm</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
+{% for m in metrics %}<tr><td>{{m.algorithm}}</td><td>{{m.accuracy}}</td><td>{{m.precision}}</td><td>{{m.recall}}</td><td>{{m.f1}}</td></tr>{% endfor %}
+</table></div>
+<div class="card"><h3>Performance Graphs</h3><img style="max-width:100%" src="data:image/png;base64,{{graph}}"></div>
+<p style="text-align:center;font-size:12px">Educational project – not a medical diagnosis.</p>
+{% endblock %}
